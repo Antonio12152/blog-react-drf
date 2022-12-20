@@ -1,6 +1,6 @@
-from .models import Post,Category
-from rest_framework import generics,viewsets
-from .serializers import PostSerializer,CatSerializer
+from .models import Post, Category
+from rest_framework import generics, viewsets
+from .serializers import PostSerializer, CatSerializer
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.forms import model_to_dict
@@ -8,26 +8,30 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAdminUser, I
 from rest_framework.authentication import TokenAuthentication
 from .permissions import IsAdminOrReadOnly, IsOwnerOrReadOnly
 
+
 class PostAPIList(generics.ListCreateAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-    permission_classes = (IsAuthenticated, )
+#   permission_classes = (IsAuthenticated, )
 #    authentication_classes = (TokenAuthentication,)
+
 
 class PostAPIUpdate(generics.RetrieveUpdateAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-    permission_classes = (IsOwnerOrReadOnly, )
+#   permission_classes = (IsOwnerOrReadOnly, )
+
 
 class PostAPIDelete(generics.RetrieveDestroyAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-    permission_classes = (IsAdminOrReadOnly, )
+#   permission_classes = (IsAdminOrReadOnly, )
+
 
 class CatViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CatSerializer
-    permission_classes = (IsAdminUser, )
+#   permission_classes = (IsAdminUser, )
 
 # class PostAPIView(APIView):
 #     def get(self, request):

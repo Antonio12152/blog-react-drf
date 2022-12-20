@@ -6,7 +6,7 @@ from rest_framework.parsers import JSONParser
 
 
 class PostSerializer(serializers.ModelSerializer):
-    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+    # user = serializers.HiddenField(default=serializers.CurrentUserDefault())
     class Meta:
         model = Post
         fields = '__all__'
